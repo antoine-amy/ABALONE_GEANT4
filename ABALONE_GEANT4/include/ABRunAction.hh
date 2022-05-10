@@ -48,7 +48,7 @@ class ABRunAction : public G4UserRunAction
 {
 private:
     PersistencyHandler* persistencyHandler;
-    std::string filename = "/home/amy/ABALONE/ABALONE_simulation/results/SiPM/SiPM_readout";
+    std::string filename = "/home/amy/ABALONE_GEANT4/results/SiPM/SiPM_readout";
     int file_count;
 	G4GenericMessenger* fMessenger;
 public:
