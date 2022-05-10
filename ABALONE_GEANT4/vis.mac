@@ -1,0 +1,59 @@
+# Macro file for the visualization setting in the initialization phase 
+# of the AB simulation when running in interactive mode
+#
+
+/control/verbose 0
+/control/saveHistory
+/run/verbose 0
+
+/run/initialize
+
+# Visualization setting
+
+/vis/open OGL 600x600-0+0
+
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+
+/vis/drawVolume
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+/vis/viewer/set/style wireframe
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+/vis/scene/endOfEventAction accumulate
+
+
+# Decorations
+/vis/set/textColour cyan
+/vis/set/textLayout right
+/vis/scene/add/text2D 0.9 -.9 12 ! ! - by Sze Chun Yiu @ Stockholm University
+/vis/set/textColour yellow
+/vis/set/textLayout right
+/vis/scene/add/text2D 0.9 -.85 12 ! ! ABALONE photosensor simulation ver 2.1
+/vis/set/textLayout    # Revert to normal (left adjusted) layout
+/vis/set/textColour    # Revert to default text colour (blue)
+
+
+# Axes, scale, etc.
+/vis/scene/add/eventID # Drawn at end of event
+/vis/scene/add/date    # Date stamp
+
+
+# To get nice view, make the "World" box invisible
+/vis/geometry/set/visibility World 0 false
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/viewpointThetaPhi 180 90
+/vis/viewer/set/style w
+/vis/viewer/set/viewpointVector 0 -1 0.5
+
+
+# Re-establish auto refreshing and verbosity:
+/vis/viewer/set/autoRefresh true

@@ -1,0 +1,38 @@
+# Macro file for AB simulation
+# 
+# Can be run in batch, without graphic
+# or interactively: Idle> /control/execute run1.mac
+#
+
+# Initialize
+/tracking/verbose 0
+/tracking/storeTrajectory 0
+/gun/particle e-
+/gun/energy 0.25 eV
+
+# 1 pe events from 0 to 85 deg, ~15 deg each, change it by yourself !
+/ABALONE_Event/generator/number 1
+
+# rad means degree here... 
+/ABALONE_Event/generator/angle 0.05
+# /gun/position  
+# /gun/direction
+/control/execute execute.mac
+
+/ABALONE_Event/generator/angle 15 
+/control/execute execute.mac
+
+/ABALONE_Event/generator/angle 30 
+/control/execute execute.mac
+
+/ABALONE_Event/generator/angle 45 
+/control/execute execute.mac
+
+/ABALONE_Event/generator/angle 60 
+/control/execute execute.mac
+
+/ABALONE_Event/generator/angle 75 
+/control/execute execute.mac
+
+/ABALONE_Event/generator/angle 85 
+/control/execute execute.mac

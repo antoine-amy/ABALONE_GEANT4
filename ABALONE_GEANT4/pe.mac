@@ -1,0 +1,22 @@
+#################
+##
+## This macro demonstrates the emission of a pe
+##
+#################
+
+
+
+/control/verbose 0
+/tracking/verbose 0
+/run/verbose 0
+/process/verbose 0
+
+/run/initialize
+
+/ABALONE_Event/generator/mode 1
+
+/gun/particle e-
+#/gun/energy 0.25 eV
+
+
+/run/beamOn 5

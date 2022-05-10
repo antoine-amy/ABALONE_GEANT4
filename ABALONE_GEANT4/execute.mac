@@ -1,0 +1,5 @@
+# always clear the file number before working
+/ABALONE/file/file_number 1
+
+# make a loop for doing "beamOn 5" N times
+/control/loop beamon.mac counter 1 2000 1

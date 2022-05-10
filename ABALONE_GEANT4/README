@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+
+=========================================================
+Geant4 - an Object-Oriented Toolkit for Simulation in HEP
+=========================================================
+
+		  ABALONE photosensor
+		  -------------------
+
+Building the simulation from source code
+
+% cd <to the desired directory>
+% mkdir ABALONE_simulation
+% cd ABALONE_simulation
+% sudo cmake -DGeant4_DIR=<Your Directory>/Geant4/geant4-install/lib/Geant4-10.5.1 <Your Directory>/ABALONE_source 
+% sudo make install -jN
+
+BEFORE RUNNING THE SIMULATION
+
+-- Create the folder structure --
+
+### Please create a folder to contain the output files ###
+% mkdir <desired directory>/results/SiPM
+% mkdir <desired directory>/results/tracking
+
+And please change the save directory of the output files in the code in both ABEventAction.cc and ABEventAction.hh
+
+### Please provide the electric field map ###
+The directory to the electric field map should be specified in the file ABElectricField.cc
+
+Below is the folder structrue in my computer for your reference:
+
+-> <My Directory> 
+----> ABALONE_Simulation
+----> source
+----> Electric_Field
+----> Simulation_results
+-------- SiPM
+-------- tracking
+
+- Execute the simulation in the 'interactive mode' with visualization:
+% ./ABsimulation
+
+- Execute the simulation in the 'batch' mode from macro files (without visualization)
+For a full run of ABALONE detector simulation over all the angles, the macro file full_run.mac can be used
+% ./ABsimulation -m full_run.mac
+
+
