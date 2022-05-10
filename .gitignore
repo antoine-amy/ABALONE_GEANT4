@@ -1,5 +1,8 @@
 # build folder
-ABALONE_build
+build
+
+#data files that are too large
+*.csv
 
 # Compiled Object files
 *.slo

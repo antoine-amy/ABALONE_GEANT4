@@ -134,7 +134,7 @@ void ABRunAction::BeginOfRunAction(const G4Run* /*run*/)
 	// Get analysis manager
 	auto analysisManager = G4AnalysisManager::Instance();
 	// Open an output file
-	G4String fileName = "/home/amy/ABALONE_GEANT4/results/tracking/"+std::to_string(nPrimeries)+sepp+std::to_string((int)theta_source)+sepp+"track_"+std::to_string(file_count);
+	G4String fileName = "/home/amy/ABALONE/ABALONE_GEANT4/results/tracking/"+std::to_string(nPrimeries)+sepp+std::to_string((int)theta_source)+sepp+"track_"+std::to_string(file_count);
 	analysisManager->OpenFile(fileName);
 	//std::cerr<< fileName << std::endl;
 }
