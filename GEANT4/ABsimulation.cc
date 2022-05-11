@@ -49,7 +49,7 @@
 #include "G4EmPenelopePhysics.hh"
 #include "G4OpticalPhysics.hh"
 #include "G4EmStandardPhysics_option4.hh"
-#include "G4RadioactiveDecayPhysics.hh"
+#include "G4RadioactiveDecay.hh"
 //#include "G4DecayPhysics.hh"
 #include "ABStackingAction.hh"
 
@@ -174,10 +174,21 @@ int main(int argc, char** argv){
 	opticalParams->SetCerenkovTrackSecondariesFirst(true);
 	opticalParams->SetScintTrackSecondariesFirst(true);
 
+	//const G4RadioactiveDecay* theRadioactiveDecay=new G4RadioactiveDecay();
+	//G4ProcessManager* pmanager = pmanager ->AddProcess(theRadioactiveDecay);
 
+
+	//physicsList->RegisterPhysics( new G4RadioactiveDecay());
 	physicsList->RegisterPhysics(opticalPhysics);
+	
 	//physicsList->RegisterPhysics(new G4DecayPhysics());
-  	physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
+
+	G4RadioactiveDecay* RadioactiveDecay=new G4RadioactiveDecay();
+	auto RadioactiveDecayParams=G4OpticalParameters::Instance();
+	RadioactiveDecayParams->SetAnalogueMonteCarlo(false);
+
+  	//physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
+
 	runManager->SetUserInitialization(physicsList);
 
 	std::cerr << "Initializing the Actions..." << std::endl;
