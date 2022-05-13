@@ -19,8 +19,8 @@
 #/grdm/setRadioactiveDecayFile 71 176 Biasdecay_z71.a176
 #/process/had/rdm/setRadioactiveDecayFile 71 176 Biasdecay_z71.data
 
-/grdm/analogeMC
-/grdm/sourceTimeProfile Biasdecay_z71.data
+#/grdm/analogeMC
+#/grdm/sourceTimeProfile Biasdecay_z71.data
 
 #
 /gun/particle ion
