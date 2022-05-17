@@ -203,7 +203,7 @@ void G4SipmDigitizer::Digitize() {
 	G4SipmDigiCollection* fired = new G4SipmDigiCollection(GetName(), GetCollectionName(0));
 	while (queue.hasNext()) {
 		G4SipmDigi* d = queue.next();
-		if (controller->fire(d)) {
+		//if (controller->fire(d)) { //devrait etre active
 			fired->insert(d);
 			// Handle crosstalk.
 			if (G4SipmUiMessenger::getInstance()->isNoiseCrosstalk()) {
@@ -213,7 +213,7 @@ void G4SipmDigitizer::Digitize() {
 			if (G4SipmUiMessenger::getInstance()->isNoiseAfterpulse()) {
 				addAfterpulses(d, &queue);
 			}
-		}
+		//}
 	}
 	// Store digis.
 	StoreDigiCollection(fired);

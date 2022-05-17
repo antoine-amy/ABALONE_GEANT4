@@ -50,7 +50,7 @@
 #include "G4OpticalPhysics.hh"
 #include "G4EmStandardPhysics_option4.hh"
 #include "G4RadioactiveDecayPhysics.hh"
-//#include "G4DecayPhysics.hh"
+#include "G4DecayPhysics.hh"
 #include "ABStackingAction.hh"
 
 #include "G4EmLivermorePhysics.hh"
@@ -160,6 +160,9 @@ int main(int argc, char** argv){
 	runManager->SetUserInitialization(detConstruction);
 
 	std::cerr << "Initializing the Physics List..." << std::endl;
+
+	//G4VUserPhysicsList* physics = new ABPhysicsList;
+  	//runManager->SetUserInitialization(physics);
 	
 	G4VModularPhysicsList* physicsList=new QGSP_BIC;
 	physicsList->ReplacePhysics(new G4EmStandardPhysics_option4());
@@ -174,14 +177,17 @@ int main(int argc, char** argv){
 	opticalParams->SetCerenkovTrackSecondariesFirst(true);
 	opticalParams->SetScintTrackSecondariesFirst(true);
 
-	//const G4RadioactiveDecay* theRadioactiveDecay=new G4RadioactiveDecay();
-	//G4ProcessManager* pmanager = pmanager ->AddProcess(theRadioactiveDecay);
-
 
 	//physicsList->RegisterPhysics( new G4RadioactiveDecay());
 	physicsList->RegisterPhysics(opticalPhysics);
 	
 	physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
+	physicsList->RegisterPhysics(new G4DecayPhysics());
+
+	//G4RadioactiveDecay* theRadioactiveDecay=new G4RadioactiveDecay();
+	//G4ProcessManager* pmanager = pmanager ->AddProcess(theRadioactiveDecay);
+
+	
 
 	//G4RadioactiveDecay* RadioactiveDecay=new G4RadioactiveDecay();
 	//auto RadioactiveDecayParams=G4OpticalParameters::Instance();

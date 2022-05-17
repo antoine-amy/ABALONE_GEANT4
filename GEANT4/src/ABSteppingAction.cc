@@ -53,7 +53,7 @@ ABSteppingAction::~ABSteppingAction()
 
 void ABSteppingAction::UserSteppingAction(const G4Step* step)
 {
-
+	G4double test;
 	auto analysisManager = G4AnalysisManager::Instance();
 
 	G4String all_lv[16] = { "World" ,"GlassShellLV","AU_sealingLV","In_sealingLV","Cr_sealingLV","PhotocathodeLV","Base_logical","ring_logical1","ring_logical2","ring_logical3","ring_logical4" ,"ring_logical5","ring_logical6","Scint_sealing_Au_LV","Scint_sealing_Cr_LV","ScintillatorLV" };
@@ -76,6 +76,17 @@ void ABSteppingAction::UserSteppingAction(const G4Step* step)
 			break;
 		}
 	}
+
+	if (step->GetTrack()->GetParentID()==1){
+		G4double gtime= step->GetTrack()->GetLocalTime();
+		//std::cout << "-----------------timetest---------------------" << gtime << std::endl;
+		test=0;
+		}
+	if (step->IsLastStepInVolume() && test==0){
+		//G4double gtime2= step->GetPreStepPoint()->GetGlobalTime();
+		//test=1;
+		//std::cout << "-----------------timetestt---------------------" << gtime2/1e+27<< std::endl;
+		}
 
 	
 	analysisManager->FillNtupleDColumn(0, static_cast<double>(G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID()));

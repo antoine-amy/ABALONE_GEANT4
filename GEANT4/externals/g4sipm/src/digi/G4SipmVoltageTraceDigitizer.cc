@@ -50,12 +50,12 @@ void G4SipmVoltageTraceDigitizer::Digitize() {
 	}
 	G4SipmVoltageTraceModel* voltageTraceModel = sipm->getModel()->getVoltageTraceModel();
 	// Assuming digis are ordered chronologically, get the first and last.
-	double tMin = reinterpret_cast<G4SipmDigi*>(digis->GetVector()->front())->getTime();
-	double tMax = reinterpret_cast<G4SipmDigi*>(digis->GetVector()->back())->getTime()
-			+ 10. * voltageTraceModel->getTauFall();
+	double tMin = reinterpret_cast<G4SipmDigi*>(digis->GetVector()->front())->getTime(); //here
+	double tMax = reinterpret_cast<G4SipmDigi*>(digis->GetVector()->back())->getTime()+ 10. * voltageTraceModel->getTauFall();
 	// Create trace.
 	G4SipmVoltageTraceDigi* trace = new G4SipmVoltageTraceDigi(sipm->getId(), tMin, tMax,
 			voltageTraceModel->getTimeBinWidth());
+	std::cout << "G4SipmVoltageTraceDigitizer::Digitize(): Size " << voltageTraceModel->getTimeBinWidth() << std::endl;
 	trace->setPrecision(voltageTraceModel->getPrecision());
 	for (size_t i = 0; i < digis->GetSize(); i++) {
 		G4SipmDigi* d = reinterpret_cast<G4SipmDigi*>(digis->GetDigi(i));
@@ -65,6 +65,7 @@ void G4SipmVoltageTraceDigitizer::Digitize() {
 			size_t index = trace->index(ti + d->getTime());
 			if (index < trace->size()) {
 				double vi = voltageTraceModel->pulse(ti, d->getWeight());
+						//std::cout << "G4SipmVoltageTraceDigitizer::Digitize(): Size " << vi << std::endl;
 				// If pulse gets really small break early.
 				if (ti > voltageTraceModel->getTauRise() && vi < 1e-4 * voltageTraceModel->getAmplitude()) {
 					break;
@@ -84,6 +85,7 @@ void G4SipmVoltageTraceDigitizer::Digitize() {
 	// Store trace.
 	G4SipmVoltageTraceDigiCollection* traces = new G4SipmVoltageTraceDigiCollection(GetName(), GetCollectionName(0));
 	traces->insert(trace);
+	std::cout << "-----------------test---------------------" << traces << std::endl;
 	StoreDigiCollection(traces);
 	// Stop timer and print information.
 	timer.Stop();

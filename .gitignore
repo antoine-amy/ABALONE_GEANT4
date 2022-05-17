@@ -1,5 +1,6 @@
 # build folder
 build
+results/SiPM/
 
 # vs Code
 .vscode

@@ -12,10 +12,10 @@
 
 G4ThreadLocal G4Allocator<G4SipmVoltageTraceDigi>* G4SipmVoltageTraceDigiAllocator = 0;
 
-G4SipmVoltageTraceDigi::G4SipmVoltageTraceDigi(const G4SipmId _sipmId, const double _tMin, const double _tMax,
-		const double _timeBinWidth) :
-		sipmId(_sipmId), tMin(_tMin), tMax(_tMax), timeBinWidth(_timeBinWidth), precision(12), voltageRange(2. * CLHEP::volt) {
+G4SipmVoltageTraceDigi::G4SipmVoltageTraceDigi(const G4SipmId _sipmId, const double _tMin, const double _tMax, const double _timeBinWidth):
+	sipmId(_sipmId), tMin(_tMin), tMax(_tMax), timeBinWidth(_timeBinWidth), precision(12), voltageRange(2. * CLHEP::volt) {
 	size_t n = ceil((tMax - tMin) / timeBinWidth);
+	std::cout << "G4SipmVoltageTraceDigi::Digitize(): Size " << n << std::endl;
 	voltages = std::vector<double>(n, 0.);
 }
 

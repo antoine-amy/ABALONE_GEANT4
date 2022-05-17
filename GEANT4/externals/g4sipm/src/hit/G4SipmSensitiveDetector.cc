@@ -48,7 +48,7 @@ G4SipmHit* G4SipmSensitiveDetector::createHit(G4Step* step) {
 	hit->setPdgId(particle->GetPDGcode());
 	hit->setTrackId(step->GetTrack()->GetTrackID());
 	hit->setSipmId(sipm->getId());
-	hit->setTime(stepPoint->GetGlobalTime());
+	hit->setTime(stepPoint->GetLocalTime()); //here
 	hit->setWeight(stepPoint->GetWeight());
 	// Get local position.
 	G4ThreeVector globalPos = stepPoint->GetPosition();
