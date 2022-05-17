@@ -27,9 +27,11 @@
 /// \file ABsimulation.cc
 /// \brief Main program of the AB simulation
 
+#include "PhysicsList.hh"
 #include "ABDetectorConstruction.hh"
 #include "ABActionInitialization.hh"
 #include "ABSteppingAction.hh"
+
 #ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
 #else
@@ -163,24 +165,28 @@ int main(int argc, char** argv){
 
 	//G4VUserPhysicsList* physics = new ABPhysicsList;
   	//runManager->SetUserInitialization(physics);
-	
-	G4VModularPhysicsList* physicsList=new QGSP_BIC;
-	physicsList->ReplacePhysics(new G4EmStandardPhysics_option4());
+	runManager->SetUserInitialization(new PhysicsList);
 
-	G4OpticalPhysics* opticalPhysics=new G4OpticalPhysics();
-	auto opticalParams=G4OpticalParameters::Instance();
-	opticalParams->SetWLSTimeProfile("delta");
-	opticalParams->SetScintYieldFactor(1.0);
-	opticalParams->SetScintExcitationRatio(0.0);
-	opticalParams->SetCerenkovMaxPhotonsPerStep(2000);
-	opticalParams->SetCerenkovMaxBetaChange(100.0);
-	opticalParams->SetCerenkovTrackSecondariesFirst(true);
-	opticalParams->SetScintTrackSecondariesFirst(true);
+//-----------------------------------------------------------------
+	
+	//G4VModularPhysicsList* physicsList=new QGSP_BIC;
+	//physicsList->ReplacePhysics(new G4EmStandardPhysics_option4());
+
+	//G4OpticalPhysics* opticalPhysics=new G4OpticalPhysics();
+	//auto opticalParams=G4OpticalParameters::Instance();
+	//opticalParams->SetWLSTimeProfile("delta");
+	//opticalParams->SetScintYieldFactor(1.0);
+	//opticalParams->SetScintExcitationRatio(0.0);
+	//opticalParams->SetCerenkovMaxPhotonsPerStep(2000);
+	//opticalParams->SetCerenkovMaxBetaChange(100.0);
+	//opticalParams->SetCerenkovTrackSecondariesFirst(true);
+	//opticalParams->SetScintTrackSecondariesFirst(true);
 
 
 	//physicsList->RegisterPhysics( new G4RadioactiveDecay());
-	physicsList->RegisterPhysics(opticalPhysics);
+	//physicsList->RegisterPhysics(opticalPhysics);
 	
+
 	physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
 	physicsList->RegisterPhysics(new G4DecayPhysics());
 
@@ -188,6 +194,8 @@ int main(int argc, char** argv){
 	//G4ProcessManager* pmanager = pmanager ->AddProcess(theRadioactiveDecay);
 
 	
+	//physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
+
 
 	//G4RadioactiveDecay* RadioactiveDecay=new G4RadioactiveDecay();
 	//auto RadioactiveDecayParams=G4OpticalParameters::Instance();
@@ -195,7 +203,9 @@ int main(int argc, char** argv){
 
   	//physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
 
-	runManager->SetUserInitialization(physicsList);
+	//runManager->SetUserInitialization(physicsList);
+
+//------------------------------------------------------------------------
 
 	std::cerr << "Initializing the Actions..." << std::endl;
 	auto actionInitialization=new ABActionInitialization();
@@ -219,7 +229,7 @@ int main(int argc, char** argv){
 	CLHEP::HepRandomEngine* theEngine = CLHEP::HepRandom::getTheEngine();
 	auto theSeed = theEngine->getSeed();
 	G4cout << "Random seed check: " << theSeed << G4endl;
-	
+
 
 	// Initialize visualization
 	std::cerr << "Initializing Visualization..." << std::endl;
@@ -232,7 +242,7 @@ int main(int argc, char** argv){
 	
 
 	// Process macro or start UI session
-	//
+
 	if (macro.size()) { //macro.size()
 		// batch mode
 		G4String command = "/control/execute ";
