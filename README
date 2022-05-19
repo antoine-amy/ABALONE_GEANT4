@@ -12,7 +12,7 @@ Geant4 - an Object-Oriented Toolkit for Simulation in HEP
 % mkdir build
 % cd build
 % sudo cmake -DGeant4_DIR=<Your Geant4 install Directory (like /usr/share/geant4/geant4.10.07-install/lib/Geant4-10.7.1/)> <Your Directory>ABALONE_GEANT4/GEANT4
-% sudo make install -j16 && sudo make
+% sudo make install -jN && sudo make
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
