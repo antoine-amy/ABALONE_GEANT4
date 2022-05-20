@@ -98,6 +98,7 @@ ABRunAction::ABRunAction(): G4UserRunAction()
 	//analysisManager->SetNtupleMerging(true);
 	// Creating ntuple
 	analysisManager->CreateNtuple("ABALONE", "Tracking");
+	analysisManager->CreateH1("Hits","Photon hits", 1000, 0., 2500.);
 	analysisManager->CreateNtupleDColumn("Event_ID");
 	analysisManager->CreateNtupleDColumn("Parent_ID");
 	analysisManager->CreateNtupleDColumn("Track_ID");
