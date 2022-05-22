@@ -26,6 +26,8 @@
 #include "digi/G4SipmCellFireController.hh"
 #include "digi/G4SipmEffectiveOvervoltageCellFireController.hh"
 
+#include "../../../../include/ABAnalysis.hh"
+
 G4SipmDigitizer::G4SipmDigitizer(G4Sipm* _sipm) :
 		G4VDigitizerModule(_sipm->getDigitizerName()), sipm(_sipm) {
 	// Add digi collection name.
@@ -190,9 +192,13 @@ void G4SipmDigitizer::Digitize() {
 	}
 	std::cout << "G4SipmDigitizer::Digitize(): \"" << GetName() << "\": created " << queue.size() << " photon hits."
 			<< std::endl;
+	//queue.size() to a root file
+	//auto analysisManager = G4AnalysisManager::Instance();
+	//analysisManager->FillH1(0, queue.size());
+
 	if (G4SipmUiMessenger::getInstance()->isNoiseThermal()) {
 		// Add thermal noise.
-		addThermalNoise(&queue, tMin, tMax); //here
+		//addThermalNoise(&queue, tMin, tMax); //here
 	}
 	// Iterate queue.
 	double t0 = queue.empty() ? 0 : queue.top()->getTime();
@@ -203,7 +209,7 @@ void G4SipmDigitizer::Digitize() {
 	G4SipmDigiCollection* fired = new G4SipmDigiCollection(GetName(), GetCollectionName(0));
 	while (queue.hasNext()) {
 		G4SipmDigi* d = queue.next();
-		if (controller->fire(d)) {
+		if (controller->fire(d)) { //here
 			fired->insert(d);
 			// Handle crosstalk.
 			if (G4SipmUiMessenger::getInstance()->isNoiseCrosstalk()) {

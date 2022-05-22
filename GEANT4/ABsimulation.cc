@@ -50,7 +50,10 @@
 #include "G4OpticalPhysics.hh"
 #include "G4EmStandardPhysics_option4.hh"
 #include "G4RadioactiveDecayPhysics.hh"
+#include "G4RadioactiveDecay.hh"
 #include "ABStackingAction.hh"
+
+//#include "ABPhysicsList.hh"
 
 #include "G4EmLivermorePhysics.hh"
 #include "G4PhysListFactory.hh"
@@ -158,11 +161,10 @@ int main(int argc, char** argv){
 	auto detConstruction = new ABDetectorConstruction("resources/sensl-microfc-60035-sm.properties","default");
 	runManager->SetUserInitialization(detConstruction);
 
+	//PhysicsList inside Main()
 	std::cerr << "Initializing the Physics List..." << std::endl;
-	
 	G4VModularPhysicsList* physicsList=new QGSP_BIC;
 	physicsList->ReplacePhysics(new G4EmStandardPhysics_option4());
-
 	G4OpticalPhysics* opticalPhysics=new G4OpticalPhysics();
 	auto opticalParams=G4OpticalParameters::Instance();
 	opticalParams->SetWLSTimeProfile("delta");
@@ -172,23 +174,21 @@ int main(int argc, char** argv){
 	opticalParams->SetCerenkovMaxBetaChange(100.0);
 	opticalParams->SetCerenkovTrackSecondariesFirst(true);
 	opticalParams->SetScintTrackSecondariesFirst(true);
+	//physicsList->RegisterPhysics(new G4RadioactiveDecay());
+	physicsList->RegisterPhysics(opticalPhysics);
+	physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
+	runManager->SetUserInitialization(physicsList);
 
+
+	//Tests for implemeting G4DecayPhysics();
 	//const G4RadioactiveDecay* theRadioactiveDecay=new G4RadioactiveDecay();
 	//G4ProcessManager* pmanager = pmanager ->AddProcess(theRadioactiveDecay);
-
-
-	//physicsList->RegisterPhysics( new G4RadioactiveDecay());
-	physicsList->RegisterPhysics(opticalPhysics);
-	
-	physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
-
 	//G4RadioactiveDecay* RadioactiveDecay=new G4RadioactiveDecay();
 	//auto RadioactiveDecayParams=G4OpticalParameters::Instance();
 	//RadioactiveDecayParams->SetAnalogueMonteCarlo(false);
 
-  	//physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
-
-	runManager->SetUserInitialization(physicsList);
+	//Seperate PhysicsList file
+	//runManager->SetUserInitialization(new ABPhysicsList);
 
 	std::cerr << "Initializing the Actions..." << std::endl;
 	auto actionInitialization=new ABActionInitialization();

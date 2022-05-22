@@ -87,7 +87,6 @@ set(ABSIMULATION_SCRIPTS
   decay.mac
   vis.mac
   gui.mac
-  Biasdecay_z71.a176
   Biasdecay_z71.data
   )
 
