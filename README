@@ -22,18 +22,20 @@ Change the save directory of the output files in the code in both ABEventAction.
 
 Import the electric fields
 % mkdir E_fields
+% cd E_fileds
 % cp <directory of the electric fields from COMSOL>
 
 and change the directory of the electric field map in the file ABElectricField.cc
 
-Below the folder structrue for reference:
--> <My Directory>
-----> ABALONE_GEANT4
-----> GEANT4
-----> E_field
-----> results
--------- SiPM
--------- tracking
+### Below the folder structrue for reference:
+    My Directory
+    │  
+    ├── ABALONE_GEANT4
+    ├── GEANT4
+    ├── E_field
+    └── results
+    	  ├── SiPM
+	  └── tracking
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -44,5 +46,3 @@ In 'interactive mode' with visualization:
 
 In 'batch' mode from macro files:
 % ./ABsimulation -m full_run.mac
-
-
