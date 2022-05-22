@@ -1,3 +1,13 @@
+
+<table align="center"><tr><td align="center" width="9999">
+
+# Geant4 - an Object-Oriented Toolkit for Simulation in HEP
+## ABALONE photosensor
+
+</td></tr></table>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Building the simulation from source code:
 ```
 mkdir build
@@ -8,7 +18,7 @@ sudo make install -jN && sudo make
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Before running the simulation
+## Before running the simulation:
 
 - Change the save directory of the output files in the code in both ```ABEventAction.cc``` and ```ABEventAction.hh```.
 
@@ -18,7 +28,7 @@ mkdir E_fields
 cd E_fileds
 cp <directory of the electric fields from COMSOL>
 ```
-and change the directory of the electric field map in the file ABElectricField.cc.
+and change the directory of the electric field map in the file ```ABElectricField.cc```.
 
 Below the folder structrue for reference:
 
@@ -28,12 +38,12 @@ Below the folder structrue for reference:
     ├── GEANT4
     ├── E_field
     └── results
-    	  ├── SiPM
-	  └── tracking
+    	├── SiPM
+		└── tracking
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Execute the simulation
+## Execute the simulation:
 
 - In 'interactive mode' with visualization: ``` ./ABsimulation```
 - In 'batch' mode from macro files: ```./ABsimulation -m full_run.mac```
