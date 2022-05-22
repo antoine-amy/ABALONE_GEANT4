@@ -12,7 +12,7 @@
     GEANT4
     │  
     ├── externals                      # files needed for the simulation to work 
-    │					└── especially the SiPM code using [G4SiPM](https://github.com/ntim/g4sipm)
+    │					 └── especially the SiPM code using G4SiPM https://github.com/ntim/g4sipm
     ├── include                        # header files
     ├── plots                          # files for plotting results
     ├── resources                      # data of several SiPM
