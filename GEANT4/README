@@ -7,42 +7,16 @@ Geant4 - an Object-Oriented Toolkit for Simulation in HEP
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---Building the simulation from source code--
-
-% mkdir build
-% cd build
-% sudo cmake -DGeant4_DIR=<Your Geant4 install Directory (like /usr/share/geant4/geant4.10.07-install/lib/Geant4-10.7.1/)> <Your Directory>ABALONE_GEANT4/GEANT4
-% sudo make install -jN && sudo make
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
---Before running the simulation--
-
-Change the save directory of the output files in the code in both ABEventAction.cc and ABEventAction.hh
-
-Import the electric fields
-% mkdir E_fields
-% cp <directory of the electric fields from COMSOL>
-
-and change the directory of the electric field map in the file ABElectricField.cc
-
-Below the folder structrue for reference:
--> <My Directory>
-----> ABALONE_GEANT4
-----> GEANT4
-----> E_field
-----> results
--------- SiPM
--------- tracking
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
---Execute the simulation--
-
-In 'interactive mode' with visualization:
-% ./ABsimulation
-
-In 'batch' mode from macro files:
-% ./ABsimulation -m full_run.mac
+--folder structure--
+-> <GEANT4>
+----> externals #files needed for the simulation to work (especially the SiPM code from https://github.com/ntim/g4sipm)
+----> include #header files
+----> plots #files for plotting results
+----> resources #data of several SiPM
+----> run #python scripts
+----> src #source files
+-- ABsimulation.cc #
+-- pe.mac #macro simulating the emission of a electron in the ABALONE
+-- decay.mac #macro simulating the decay of 176Lu in LYSO
 
 
