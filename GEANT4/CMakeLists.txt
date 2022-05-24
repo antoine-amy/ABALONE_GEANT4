@@ -62,9 +62,9 @@ find_package(Boost 1.50.0 COMPONENTS date_time program_options filesystem system
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIR})
 
-add_subdirectory(plots)
-add_subdirectory(resources)
-add_subdirectory(run)
+#add_subdirectory(plots)
+#add_subdirectory(resources)
+#add_subdirectory(run)
 
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
@@ -88,6 +88,7 @@ set(ABSIMULATION_SCRIPTS
   vis.mac
   gui.mac
   Biasdecay_z71.data
+  Biased_z71.a176
   )
 
 foreach(_script ${ABSIMULATION_SCRIPTS})

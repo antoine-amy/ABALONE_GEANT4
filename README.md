@@ -34,7 +34,7 @@ Below the folder structrue for reference:
 
     My Directory
     │  
-    ├── ABALONE_GEANT4
+    ├── build
     ├── GEANT4
     ├── E_field
     └── results
