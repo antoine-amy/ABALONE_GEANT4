@@ -6,7 +6,7 @@ archives/
 .vscode
 
 #data files that are too large
-*.csv
+#*.csv
 
 # Compiled Object files
 *.slo
