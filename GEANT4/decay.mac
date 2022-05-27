@@ -6,7 +6,7 @@
 
 #Verbosity
 /control/verbose 0
-/tracking/verbose 3
+/tracking/verbose 1
 /run/verbose 0
 /process/verbose 0
 
@@ -19,7 +19,7 @@
 #Use a custom file to have the decay in the first nanosecond (don't wait for the half-life decay)
 #/grdm/analogeMC 0
 #/grdm/sourceTimeProfile Biasdecay_z71.data
-/grdm/setRadioactiveDecayFile 71 176 Biased_z71.a176
+#/grdm/setRadioactiveDecayFile 71 176 Biased_z71.a176
 
 #Set gun settings
 /gun/particle ion
@@ -28,3 +28,6 @@
 
 #Create a particle
 /run/beamOn 1
+
+#export G4RADIOACTIVEDATA="/usr/share/geant4/geant4.10.07-install/share/Geant4-10.7.1/data/RadioactiveDecay5.6-biased"
+#change photonevap? share/Geant4-10.7.1/data/PhotonEvaporation5.7/z71.a176
