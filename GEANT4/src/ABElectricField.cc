@@ -44,8 +44,8 @@
 #include <typeinfo>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-std::string filename_datar = "/home/amy/ABALONE/ABALONE_GEANT4/E_fields/x_Efield_25.csv"; //x_Efield_25.csv
-std::string filename_dataz = "/home/amy/ABALONE/ABALONE_GEANT4/E_fields/z_Efield_25.csv"; //z_Efield_25.csv
+std::string filename_datar = "../E_fields/x_Efield_25.csv";
+std::string filename_dataz = "../E_fields/z_Efield_25.csv";
 std::vector<std::vector<float> > data_r;
 std::vector<std::vector<float> > data_z;
 double r_min, r_max, z_min, z_max, interpolation_length_r, interpolation_length_z, seperation;

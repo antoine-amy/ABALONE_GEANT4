@@ -158,7 +158,7 @@ int main(int argc, char** argv){
 	// Set mandatory initialization classes
 	//
 	std::cerr << "Initializing the Detector Consturction..." << std::endl;
-	auto detConstruction = new ABDetectorConstruction("resources/sensl-microfc-60035-sm.properties","default");
+	auto detConstruction = new ABDetectorConstruction("../GEANT4/externals/sample/resources/sensl-microfc-60035-sm.properties","default");
 	runManager->SetUserInitialization(detConstruction);
 
 	//PhysicsList inside Main()

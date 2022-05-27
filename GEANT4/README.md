@@ -14,9 +14,9 @@
     ├── externals                      # files needed for the simulation to work 
     │					└── especially the SiPM code using [G4SiPM](https://github.com/ntim/g4sipm)
     ├── include                        # header files
-    ├── plots                          # files for plotting results
-    ├── resources                      # data of several SiPM
-    ├── run			           # python scripts
+    ├── plots                          # G4SiPM dependency, files for plotting results
+    ├── resources                      # G4SiPM dependency, data of several SiPM
+    ├── run			           # G4SiPM dependency, python scripts
     ├── src			           # source files
     ├── ABsimulation.cc		   # main function file
     ├── pe.mac			   # macro simulating the emission of a electron in the ABALONE
