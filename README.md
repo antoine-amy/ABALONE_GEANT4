@@ -16,6 +16,8 @@ sudo cmake -DGeant4_DIR=<Your Geant4 install Directory (like /usr/share/geant4/g
 sudo make install -jN && sudo make
 ```
 
+The Geant4 version used for the development of the simulation is 10.07.1.
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Folder structure :
