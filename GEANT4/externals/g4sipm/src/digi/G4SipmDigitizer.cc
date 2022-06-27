@@ -197,7 +197,7 @@ void G4SipmDigitizer::Digitize() {
 
 	if (G4SipmUiMessenger::getInstance()->isNoiseThermal()) {
 		// Add thermal noise.
-		addThermalNoise(&queue, tMin, tMax); //here
+		addThermalNoise(&queue, tMin, tMax);
 	}
 	// Iterate queue.
 	double t0 = queue.empty() ? 0 : queue.top()->getTime();
