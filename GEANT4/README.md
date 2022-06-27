@@ -20,6 +20,5 @@
     ├── src			           # source files
     ├── ABsimulation.cc		   # main function file
     ├── pe.mac			   # macro simulating the emission of a electron in the ABALONE
-    └── decay.mac                      # macro simulating the decay of 176Lu in LYSO
-
-The thermal noise and conditions for the digitizer hits are currently disabled to allow test on the decay simulations.
+    ├── decay.mac                      # macro simulating the decay of 176Lu in LYSO
+    └── calibration.mac                # macro used to calibrate the ABALONE, generates blue light photons
