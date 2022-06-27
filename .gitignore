@@ -1,11 +1,12 @@
 # build folder
 build/
+archives/
 
 # vs Code
 .vscode
 
 #data files that are too large
-*.csv
+#*.csv
 
 # Compiled Object files
 *.slo
@@ -34,5 +35,4 @@ build/
 
 # Executables
 *.exe
-*.out
 *.app

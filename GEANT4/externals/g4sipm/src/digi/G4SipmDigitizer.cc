@@ -112,7 +112,6 @@ void G4SipmDigitizer::addHits(G4SipmDigiQueue* queue, double* tMin, double* tMax
 		return;
 	}
 	*tMin = reinterpret_cast<G4SipmHit*>(hits->GetHit(0))->getTime();
-	//std::cout << "temps(): \"" << getTime() << std::endl; we souldnt use getTime with decays
 
 
 	*tMax = *tMin;
@@ -198,7 +197,7 @@ void G4SipmDigitizer::Digitize() {
 
 	if (G4SipmUiMessenger::getInstance()->isNoiseThermal()) {
 		// Add thermal noise.
-		//addThermalNoise(&queue, tMin, tMax); //here
+		addThermalNoise(&queue, tMin, tMax);
 	}
 	// Iterate queue.
 	double t0 = queue.empty() ? 0 : queue.top()->getTime();
@@ -209,7 +208,7 @@ void G4SipmDigitizer::Digitize() {
 	G4SipmDigiCollection* fired = new G4SipmDigiCollection(GetName(), GetCollectionName(0));
 	while (queue.hasNext()) {
 		G4SipmDigi* d = queue.next();
-		if (controller->fire(d)) { //here
+		if (controller->fire(d)) {
 			fired->insert(d);
 			// Handle crosstalk.
 			if (G4SipmUiMessenger::getInstance()->isNoiseCrosstalk()) {

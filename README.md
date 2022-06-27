@@ -16,25 +16,15 @@ sudo cmake -DGeant4_DIR=<Your Geant4 install Directory (like /usr/share/geant4/g
 sudo make install -jN && sudo make
 ```
 
+The Geant4 version used for the development of the simulation is 10.07.1.
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Before running the simulation:
-
-- Change the save directory of the output files in the code in both ```ABEventAction.cc``` and ```ABEventAction.hh```.
-
-- Import the electric fields:
-```
-mkdir E_fields
-cd E_fileds
-cp <directory of the electric fields from COMSOL>
-```
-and change the directory of the electric field map in the file ```ABElectricField.cc```.
-
-Below the folder structrue for reference:
+## Folder structure :
 
     My Directory
     │  
-    ├── ABALONE_GEANT4
+    ├── build
     ├── GEANT4
     ├── E_field
     └── results

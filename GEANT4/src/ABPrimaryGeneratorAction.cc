@@ -129,6 +129,7 @@ void ABPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent){
       G4cerr << "Unable to find a point inside your volume!" << G4endl;
 
     fParticleGun->SetParticlePosition(point);
+    fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0, 0, -1)); //for the calibration process with photons
     fParticleGun->GeneratePrimaryVertex(anEvent);
   }
 }

@@ -1,0 +1,24 @@
+#################
+##
+## This macro is used to calibrate the SiPM
+##
+#################
+
+#Verbosity
+/control/verbose 0
+/tracking/verbose 0
+/run/verbose 0
+/process/verbose 0
+
+#Initialisation of the run
+/run/initialize
+
+#Set mode variable to 3 to have the gun location outside
+/ABALONE_Event/generator/mode 3
+
+/gun/particle opticalphoton
+/gun/energy 2.96 eV
+/gun/direction 0 0 -1
+
+#Create a particle
+/run/beamOn 350000

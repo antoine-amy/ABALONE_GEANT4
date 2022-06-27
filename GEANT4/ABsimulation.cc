@@ -53,8 +53,6 @@
 #include "G4RadioactiveDecay.hh"
 #include "ABStackingAction.hh"
 
-//#include "ABPhysicsList.hh"
-
 #include "G4EmLivermorePhysics.hh"
 #include "G4PhysListFactory.hh"
 
@@ -158,7 +156,7 @@ int main(int argc, char** argv){
 	// Set mandatory initialization classes
 	//
 	std::cerr << "Initializing the Detector Consturction..." << std::endl;
-	auto detConstruction = new ABDetectorConstruction("resources/sensl-microfc-60035-sm.properties","default");
+	auto detConstruction = new ABDetectorConstruction("../GEANT4/externals/sample/resources/sensl-microfc-60035-sm.properties","default");
 	runManager->SetUserInitialization(detConstruction);
 
 	//PhysicsList inside Main()
@@ -174,21 +172,9 @@ int main(int argc, char** argv){
 	opticalParams->SetCerenkovMaxBetaChange(100.0);
 	opticalParams->SetCerenkovTrackSecondariesFirst(true);
 	opticalParams->SetScintTrackSecondariesFirst(true);
-	//physicsList->RegisterPhysics(new G4RadioactiveDecay());
 	physicsList->RegisterPhysics(opticalPhysics);
 	physicsList->RegisterPhysics(new G4RadioactiveDecayPhysics());
 	runManager->SetUserInitialization(physicsList);
-
-
-	//Tests for implemeting G4DecayPhysics();
-	//const G4RadioactiveDecay* theRadioactiveDecay=new G4RadioactiveDecay();
-	//G4ProcessManager* pmanager = pmanager ->AddProcess(theRadioactiveDecay);
-	//G4RadioactiveDecay* RadioactiveDecay=new G4RadioactiveDecay();
-	//auto RadioactiveDecayParams=G4OpticalParameters::Instance();
-	//RadioactiveDecayParams->SetAnalogueMonteCarlo(false);
-
-	//Seperate PhysicsList file
-	//runManager->SetUserInitialization(new ABPhysicsList);
 
 	std::cerr << "Initializing the Actions..." << std::endl;
 	auto actionInitialization=new ABActionInitialization();

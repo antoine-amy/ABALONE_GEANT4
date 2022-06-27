@@ -16,14 +16,10 @@
 #Set mode variable to 2 to have the gun location in the LYSO (see DetectorConstruction)
 /ABALONE_Event/generator/mode 2
 
-#Use a custom file to have the decay in the first nanosecond (don't wait for the half-life decay)
-#/grdm/analogeMC 0
-#/grdm/sourceTimeProfile Biasdecay_z71.data
-
 #Set gun settings
 /gun/particle ion
-/gun/ion 71 176 0 0.0
+/gun/ion 71 176
 /gun/energy 0. eV
 
 #Create a particle
-/run/beamOn 1
+/run/beamOn 100

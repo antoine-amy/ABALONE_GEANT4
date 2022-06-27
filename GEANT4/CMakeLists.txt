@@ -87,8 +87,10 @@ set(ABSIMULATION_SCRIPTS
   decay.mac
   vis.mac
   gui.mac
-  Biasdecay_z71.data
+  calibration.mac
   )
+
+set(CMAKE_BUILD_TYPE Debug)
 
 foreach(_script ${ABSIMULATION_SCRIPTS})
   configure_file(
