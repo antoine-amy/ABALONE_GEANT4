@@ -16,6 +16,14 @@ sudo cmake -DGeant4_DIR=<Your Geant4 install Directory (like /usr/share/geant4/g
 sudo make install -jN && sudo make
 ```
 
+For example:
+```
+mkdir build
+cd build
+cmake -DGeant4_DIR=/usr/share/geant4/geant4.10.07-install/lib/Geant4-10.7.1/   ~/ABALONE/ABALONE_GEANT4/GEANT4/
+sudo make install -j16 && sudo make
+```
+
 The Geant4 version used for the development of the simulation is 10.07.1.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -24,7 +32,6 @@ The Geant4 version used for the development of the simulation is 10.07.1.
 
     My Directory
     │  
-    ├── build
     ├── GEANT4
     ├── E_field
     └── results
