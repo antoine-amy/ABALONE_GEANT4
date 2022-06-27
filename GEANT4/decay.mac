@@ -16,20 +16,10 @@
 #Set mode variable to 2 to have the gun location in the LYSO (see DetectorConstruction)
 /ABALONE_Event/generator/mode 2
 
-#Use a custom file to have the decay in the first nanosecond (don't wait for the half-life decay)
-#/grdm/analogeMC 0
-#/grdm/sourceTimeProfile Biasdecay_z71.data
-#/grdm/setRadioactiveDecayFile 71 176 Biased_z71.a176
-
 #Set gun settings
 /gun/particle ion
 /gun/ion 71 176
 /gun/energy 0. eV
 
 #Create a particle
-/run/beamOn 20000
-
-
-#export G4RADIOACTIVEDATA="/usr/share/geant4/geant4.10.07-install/share/Geant4-10.7.1/data/RadioactiveDecay5.6-biased"
-#change $G4ENSDFSTATE data for 71-176 
-#https://www.mouser.it/datasheet/2/308/1/MICROC_SERIES_D-2315622.pdf
+/run/beamOn 100

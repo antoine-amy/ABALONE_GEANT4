@@ -78,18 +78,18 @@ void ABSteppingAction::UserSteppingAction(const G4Step* step)
 	}
 
 	
-	//analysisManager->FillNtupleDColumn(0, static_cast<double>(G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID()));
-	//analysisManager->FillNtupleDColumn(1, step->GetTrack()->GetParentID());
-	//analysisManager->FillNtupleDColumn(2, step->GetTrack()->GetTrackID());
-	//analysisManager->FillNtupleDColumn(3, part_def_index);
-	//analysisManager->FillNtupleDColumn(4, step->GetPreStepPoint()->GetPosition().getX()/mm);
-	//analysisManager->FillNtupleDColumn(5, step->GetPreStepPoint()->GetPosition().getY() / mm);
-	//analysisManager->FillNtupleDColumn(6, step->GetPreStepPoint()->GetPosition().getZ() / mm);
-	//analysisManager->FillNtupleDColumn(7, step->GetPostStepPoint()->GetProperTime());
-	//analysisManager->FillNtupleDColumn(8, step->GetPreStepPoint()->GetKineticEnergy()/keV);
-	//analysisManager->FillNtupleDColumn(9, step->GetTotalEnergyDeposit()/keV);
-	//analysisManager->FillNtupleDColumn(10, logical_volume_pos);
-	//analysisManager->AddNtupleRow();
+	analysisManager->FillNtupleDColumn(0, static_cast<double>(G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID()));
+	analysisManager->FillNtupleDColumn(1, step->GetTrack()->GetParentID());
+	analysisManager->FillNtupleDColumn(2, step->GetTrack()->GetTrackID());
+	analysisManager->FillNtupleDColumn(3, part_def_index);
+	analysisManager->FillNtupleDColumn(4, step->GetPreStepPoint()->GetPosition().getX()/mm);
+	analysisManager->FillNtupleDColumn(5, step->GetPreStepPoint()->GetPosition().getY() / mm);
+	analysisManager->FillNtupleDColumn(6, step->GetPreStepPoint()->GetPosition().getZ() / mm);
+	analysisManager->FillNtupleDColumn(7, step->GetPostStepPoint()->GetProperTime());
+	analysisManager->FillNtupleDColumn(8, step->GetPreStepPoint()->GetKineticEnergy()/keV);
+	analysisManager->FillNtupleDColumn(9, step->GetTotalEnergyDeposit()/keV);
+	analysisManager->FillNtupleDColumn(10, logical_volume_pos);
+	analysisManager->AddNtupleRow();
 	
 	//G4cout << step->GetPreStepPoint()->GetKineticEnergy() / keV << G4endl;
 }

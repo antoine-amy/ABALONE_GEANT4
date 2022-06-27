@@ -87,8 +87,7 @@ set(ABSIMULATION_SCRIPTS
   decay.mac
   vis.mac
   gui.mac
-  Biased_z71.a176
-  loop.sh
+  calibration.mac
   )
 
 set(CMAKE_BUILD_TYPE Debug)

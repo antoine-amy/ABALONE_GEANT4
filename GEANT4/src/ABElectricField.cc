@@ -121,22 +121,22 @@ void ABElectricField::GetFieldValue(const G4double point[4],double *eField) cons
 
 		double x11=floor(index_r); double y11=floor(index_z); double x22=x11+1.0; double y22=y11+1.0;
 
-		int x1=x11; int y1=y11; int x2=x22; int y2=y22; 
+		int x1=x11; int y1=y11; int x2=x22; int y2=y22;
 
-		//double Er_11=data_r[y1][x1]; double Er_12=data_r[y2][x1]; double Er_21=data_r[y1][x2]; double Er_22=data_r[y2][x2];
-		//double Ez_11=data_z[y1][x1]; double Ez_12=data_z[y2][x1]; double Ez_21=data_z[y1][x2]; double Ez_22=data_z[y2][x2];
+		double Er_11=data_r[y1][x1]; double Er_12=data_r[y2][x1]; double Er_21=data_r[y1][x2]; double Er_22=data_r[y2][x2];
+		double Ez_11=data_z[y1][x1]; double Ez_12=data_z[y2][x1]; double Ez_21=data_z[y1][x2]; double Ez_22=data_z[y2][x2];
 		
-		//double E_r=((y22-index_z)*((x22-index_r)*Er_11+(index_r-x11)*Er_21)+(index_z-y11)*((x22-index_r)*Er_12+(index_r-x11)*Er_22));
-		//double E_zz=((y22-index_z)*((x22-index_r)*Ez_11+(index_r-x11)*Ez_21)+(index_z-y11)*((x22-index_r)*Ez_12+(index_r-x11)*Ez_22));
+		double E_r=((y22-index_z)*((x22-index_r)*Er_11+(index_r-x11)*Er_21)+(index_z-y11)*((x22-index_r)*Er_12+(index_r-x11)*Er_22));
+		double E_zz=((y22-index_z)*((x22-index_r)*Ez_11+(index_r-x11)*Ez_21)+(index_z-y11)*((x22-index_r)*Ez_12+(index_r-x11)*Ez_22));
 
-		//G4double E_x=E_r*x/sqrt_r *volt/m; G4double E_y=E_r*y/sqrt_r *volt/m; G4double E_z=E_zz*volt/m;
-		
+		G4double E_x=E_r*x/sqrt_r *volt/m; G4double E_y=E_r*y/sqrt_r *volt/m; G4double E_z=E_zz*volt/m;
+
 		eField[0] = 0.; //Bx
 		eField[1] = 0.; //By
 		eField[2] = 0.; //Bz
-		eField[3] =0; //eField[3] = E_x; //E_x 
-		eField[4] = 0; //eField[4] = E_y; //E_y
-		eField[5] = 0; //eField[5] = E_z; //E_z
+		eField[3] = E_x; //E_x 
+		eField[4] = E_y; //E_y
+		eField[5] = E_z; //E_z
 		eField[6] = 0.; //Useless
 	}else{
 		eField[0] = 0.; //Bx

@@ -92,25 +92,25 @@ ABRunAction::ABRunAction(): G4UserRunAction()
 	//photon_count_array.push_back(2);
 
 	// Create directories 
-	//analysisManager->SetHistoDirectoryName("histograms");
-	//analysisManager->SetNtupleDirectoryName("ntuple");
-	//analysisManager->SetVerboseLevel(1);
+	analysisManager->SetHistoDirectoryName("histograms");
+	analysisManager->SetNtupleDirectoryName("ntuple");
+	analysisManager->SetVerboseLevel(1);
 	//analysisManager->SetNtupleMerging(true);
 	// Creating ntuple
-	//analysisManager->CreateNtuple("ABALONE", "Tracking");
-	//analysisManager->CreateH1("Hits","Photon hits", 1000, 0., 2500.);
-	//analysisManager->CreateNtupleDColumn("Event_ID");
-	//analysisManager->CreateNtupleDColumn("Parent_ID");
-	//analysisManager->CreateNtupleDColumn("Track_ID");
-	//analysisManager->CreateNtupleDColumn("Particle");
-	//analysisManager->CreateNtupleDColumn("X");
-	//analysisManager->CreateNtupleDColumn("Y");
-	//analysisManager->CreateNtupleDColumn("Z");
-	//analysisManager->CreateNtupleDColumn("Time");
-	//analysisManager->CreateNtupleDColumn("KE");
-	//analysisManager->CreateNtupleDColumn("DE");
-	//analysisManager->CreateNtupleDColumn("Volume");
-	//analysisManager->FinishNtuple();
+	analysisManager->CreateNtuple("ABALONE", "Tracking");
+	analysisManager->CreateH1("Hits","Photon hits", 1000, 0., 2500.);
+	analysisManager->CreateNtupleDColumn("Event_ID");
+	analysisManager->CreateNtupleDColumn("Parent_ID");
+	analysisManager->CreateNtupleDColumn("Track_ID");
+	analysisManager->CreateNtupleDColumn("Particle");
+	analysisManager->CreateNtupleDColumn("X");
+	analysisManager->CreateNtupleDColumn("Y");
+	analysisManager->CreateNtupleDColumn("Z");
+	analysisManager->CreateNtupleDColumn("Time");
+	analysisManager->CreateNtupleDColumn("KE");
+	analysisManager->CreateNtupleDColumn("DE");
+	analysisManager->CreateNtupleDColumn("Volume");
+	analysisManager->FinishNtuple();
 
 	//std::cerr<< "Start of Run Action is Ready" << std::endl;
 }
