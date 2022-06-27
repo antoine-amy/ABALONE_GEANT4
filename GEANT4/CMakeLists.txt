@@ -88,7 +88,10 @@ set(ABSIMULATION_SCRIPTS
   vis.mac
   gui.mac
   Biased_z71.a176
+  loop.sh
   )
+
+set(CMAKE_BUILD_TYPE Debug)
 
 foreach(_script ${ABSIMULATION_SCRIPTS})
   configure_file(

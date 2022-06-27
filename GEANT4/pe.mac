@@ -19,4 +19,4 @@
 #/gun/energy 0.25 eV
 
 
-/run/beamOn 1
+/run/beamOn 1000

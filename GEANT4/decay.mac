@@ -6,7 +6,7 @@
 
 #Verbosity
 /control/verbose 0
-/tracking/verbose 1
+/tracking/verbose 0
 /run/verbose 0
 /process/verbose 0
 
@@ -27,7 +27,9 @@
 /gun/energy 0. eV
 
 #Create a particle
-/run/beamOn 1
+/run/beamOn 20000
+
 
 #export G4RADIOACTIVEDATA="/usr/share/geant4/geant4.10.07-install/share/Geant4-10.7.1/data/RadioactiveDecay5.6-biased"
-#change photonevap? share/Geant4-10.7.1/data/PhotonEvaporation5.7/z71.a176
+#change $G4ENSDFSTATE data for 71-176 
+#https://www.mouser.it/datasheet/2/308/1/MICROC_SERIES_D-2315622.pdf
